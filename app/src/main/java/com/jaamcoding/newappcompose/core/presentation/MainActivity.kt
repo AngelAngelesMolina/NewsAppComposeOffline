@@ -1,4 +1,4 @@
-package com.jaamcoding.newappcompose
+package com.jaamcoding.newappcompose.core.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            NewAppComposeTheme {
+            _root_ide_package_.com.jaamcoding.newappcompose.core.presentation.ui.theme.NewAppComposeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
@@ -41,7 +41,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    NewAppComposeTheme {
+    _root_ide_package_.com.jaamcoding.newappcompose.core.presentation.ui.theme.NewAppComposeTheme {
         Greeting("Android")
     }
 }

@@ -1,4 +1,4 @@
-package com.jaamcoding.newappcompose.ui.theme
+package com.jaamcoding.newappcompose.core.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
