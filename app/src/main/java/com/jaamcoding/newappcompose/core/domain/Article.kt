@@ -1,6 +1,6 @@
 package com.jaamcoding.newappcompose.core.domain
 
-data class News(
+data class Article(
     val article_id: String,
     val title: String,
     val description: String,

@@ -1,7 +1,7 @@
 package com.jaamcoding.newappcompose.core.domain
 
 
-data class NewList(
+data class NewsList(
     val nextPage: String?,
-    val results: List<News>
+    val results: List<Article>
 )
