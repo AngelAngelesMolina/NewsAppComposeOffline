@@ -11,6 +11,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHost
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import com.jaamcoding.newappcompose.core.presentation.ui.theme.NewAppComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,29 +24,27 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NewAppComposeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                Navigation()
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+fun Navigation(modifier: Modifier = Modifier) {
+    val navController = rememberNavController()
+    NavHost(
+        navController = navController,
+        startDestination = Screen.News
+    ) {
+        composable<Screen.News> {
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    _root_ide_package_.com.jaamcoding.newappcompose.core.presentation.ui.theme.NewAppComposeTheme {
-        Greeting("Android")
+        }
+        composable<Screen.Article> { backStackEntry ->
+            val article: Screen.Article = backStackEntry.toRoute()
+            article.articleId
+
+        }
     }
+
 }
