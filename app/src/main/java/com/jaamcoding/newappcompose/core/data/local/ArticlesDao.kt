@@ -13,7 +13,7 @@ interface ArticlesDao {
     @Upsert
     suspend fun upsertArticleList(articleList: List<ArticleEntity>)
 
-    @Query("SELECT * FROM articleentity WHERE article_id = :articleId")
+    @Query("SELECT * FROM articleentity WHERE articleId = :articleId")
     suspend fun getArticleById(articleId: String): ArticleEntity?
 
     @Query("DELETE FROM articleentity")
