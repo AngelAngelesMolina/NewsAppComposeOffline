@@ -16,6 +16,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.jaamcoding.newappcompose.core.presentation.screens.NewsScreenCore
 import com.jaamcoding.newappcompose.core.presentation.ui.theme.NewAppComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -38,6 +39,9 @@ fun Navigation(modifier: Modifier = Modifier) {
         startDestination = Screen.News
     ) {
         composable<Screen.News> {
+            NewsScreenCore() {
+                navController.navigate(Screen.Article(it))
+            }
 
         }
         composable<Screen.Article> { backStackEntry ->
