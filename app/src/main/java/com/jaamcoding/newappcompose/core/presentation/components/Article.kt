@@ -2,6 +2,7 @@ package com.jaamcoding.newappcompose.core.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,8 +32,9 @@ fun ArticleItem(
     Column(
         modifier = modifier
             .fillMaxWidth()
+            .background(MaterialTheme.colorScheme.background)
             .clickable { onArticleClick(article.articleId) }
-            .padding(vertical = 16.dp, horizontal = 16.dp)
+            .padding(vertical = 16.dp)
     ) {
 
         Text(
@@ -41,6 +43,7 @@ fun ArticleItem(
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             fontWeight = FontWeight.SemiBold,
+            modifier = Modifier.padding(horizontal = 16.dp)
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -50,6 +53,7 @@ fun ArticleItem(
             fontSize = 18.sp,
             maxLines = 3,
             overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.padding(horizontal = 16.dp)
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -71,6 +75,7 @@ fun ArticleItem(
             fontSize = 16.sp,
             maxLines = 3,
             overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.padding(horizontal = 16.dp)
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -80,10 +85,17 @@ fun ArticleItem(
             fontSize = 15.sp,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.padding(horizontal = 16.dp)
         )
 
-
     }
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(20.dp)
+            .background(MaterialTheme.colorScheme.primaryContainer.copy(0.7f))
+    )
 
 
 }
@@ -92,11 +104,20 @@ fun ArticleItem(
 @Composable
 private fun ArticleItemPrev() {
     NewAppComposeTheme {
-ArticleItem(modifier = Modifier,
-    article = Article(articleId = "1", title = "title", sourceName = "source", imageUrl = "proof", description = "Proof description", pubDate = "date", content = "content")
-    ) {
+        ArticleItem(
+            modifier = Modifier,
+            article = Article(
+                articleId = "1",
+                title = "title",
+                sourceName = "source",
+                imageUrl = "proof",
+                description = "Proof description",
+                pubDate = "date",
+                content = "content"
+            )
+        ) {
 
-}
+        }
 
     }
 }
