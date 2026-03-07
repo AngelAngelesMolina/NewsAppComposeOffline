@@ -56,7 +56,7 @@ class NewsRepositoryImpl(
                 getRemoteNews(null)
             } catch (e: Exception) {
                 e.printStackTrace()
-                if(e is CancellationException) throw e
+                if (e is CancellationException) throw e
                 println(tag + "getNews remote exception: ${e.message}")
                 null
             }
@@ -83,7 +83,7 @@ class NewsRepositoryImpl(
                 getRemoteNews(nextPage)
             } catch (e: Exception) {
                 e.printStackTrace()
-                if(e is CancellationException) throw e
+                if (e is CancellationException) throw e
                 println(tag + "getNews remote exception: ${e.message}")
                 null
             }
@@ -98,7 +98,31 @@ class NewsRepositoryImpl(
 
     }
 
-//    override suspend fun getArticle(articleId: String): Flow<NewsResult<Article>> {
-//
-//    }
+    override suspend fun getArticle(articleId: String): Flow<NewsResult<Article>> {
+        return flow {
+            dao.getArticleById(articleId)?.let { articleId ->
+                println(tag + "getArticle local: ${articleId.title}")
+                emit(NewsResult.Success(articleId.toArticle()))
+                return@flow
+            }
+
+            try {
+
+                val remoteArticle = httpClient.get(newsApi){
+                    parameter("apikey", apiKey)
+                    parameter("id", articleId)
+                }.body()
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+                if (e is CancellationException) throw e
+                println(tag + "getArticle remote exception: ${e.message}")
+                emit(NewsResult.Error("Something went wrong"))
+            }
+
+
+        }
+
+    }
+
 }
