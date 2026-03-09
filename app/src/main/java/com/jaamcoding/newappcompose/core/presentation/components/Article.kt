@@ -36,7 +36,6 @@ fun ArticleItem(
             .clickable { onArticleClick(article.articleId) }
             .padding(vertical = 16.dp)
     ) {
-
         Text(
             text = article.sourceName,
             fontSize = 22.sp,
@@ -87,6 +86,7 @@ fun ArticleItem(
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier.padding(horizontal = 16.dp)
         )
+
 
     }
 
