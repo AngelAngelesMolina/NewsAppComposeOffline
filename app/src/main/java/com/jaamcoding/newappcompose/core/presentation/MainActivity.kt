@@ -4,19 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavHost
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import androidx.navigation.toRoute
-import com.jaamcoding.newappcompose.core.presentation.screens.NewsScreenCore
+import com.jaamcoding.newappcompose.core.presentation.navigation.Navigation
 import com.jaamcoding.newappcompose.core.presentation.ui.theme.NewAppComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -29,26 +17,4 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
-
-@Composable
-fun Navigation(modifier: Modifier = Modifier) {
-    val navController = rememberNavController()
-    NavHost(
-        navController = navController,
-        startDestination = Screen.News
-    ) {
-        composable<Screen.News> {
-            NewsScreenCore() {
-                navController.navigate(Screen.Article(it))
-            }
-
-        }
-        composable<Screen.Article> { backStackEntry ->
-            val article: Screen.Article = backStackEntry.toRoute()
-            article.articleId
-
-        }
-    }
-
 }

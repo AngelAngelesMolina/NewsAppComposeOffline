@@ -1,6 +1,7 @@
 package com.jaamcoding.newappcompose
 
 import android.app.Application
+import com.jaamcoding.newappcompose.article.di.articleModule
 import com.jaamcoding.newappcompose.core.di.coreModule
 import com.jaamcoding.newappcompose.news.di.newsModule
 import org.koin.android.ext.koin.androidContext
@@ -14,7 +15,8 @@ class App : Application() {
             androidContext(this@App)
             modules(
                 coreModule,
-                newsModule
+                newsModule,
+                articleModule
             )
         }
     }
