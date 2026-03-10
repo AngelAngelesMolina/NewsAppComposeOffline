@@ -107,11 +107,17 @@ class NewsRepositoryImpl(
             }
 
             try {
-
-                val remoteArticle = httpClient.get(newsApi){
+                val remoteArticle : NewsListDto = httpClient.get(newsApi){
                     parameter("apikey", apiKey)
                     parameter("id", articleId)
                 }.body()
+
+                println(tag + "getArticle remote: ${remoteArticle.results?.size}")
+                if(remoteArticle.results?.isNotEmpty() == true){
+                    emit(NewsResult.Success(remoteArticle.results.first().toArticle()))
+                }else{
+                    emit(NewsResult.Error("Something went wrong"))
+                }
 
             } catch (e: Exception) {
                 e.printStackTrace()
