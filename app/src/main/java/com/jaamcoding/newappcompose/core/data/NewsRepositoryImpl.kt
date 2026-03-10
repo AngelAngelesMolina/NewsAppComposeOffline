@@ -1,5 +1,6 @@
 package com.jaamcoding.newappcompose.core.data
 
+import com.jaamcoding.newappcompose.BuildConfig
 import com.jaamcoding.newappcompose.core.data.local.ArticlesDao
 import com.jaamcoding.newappcompose.core.data.remote.NewsListDto
 import com.jaamcoding.newappcompose.core.data.remote.toArticle
@@ -24,7 +25,7 @@ class NewsRepositoryImpl(
 
     private val tag = "NewsRepositoryImpl: "
     private val newsApi = "https://newsdata.io/api/1/latest"
-    private val apiKey = "pub_ea0950a215d941158db618ffa44fa178"
+    private val apiKey = BuildConfig.API_KEY
 
     private suspend fun getLocalNews(nextPage: String?): NewsList {
         val localNews = dao.getArticleList()

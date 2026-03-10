@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.jetbrainsKotlinSerialization)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.secrets.gradle.plugin)
 }
 
 android {
@@ -40,7 +41,13 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
+}
+
+secrets {
+    propertiesFileName = "secrets.properties"
+    defaultPropertiesFileName = "secrets.defaults.properties"
 }
 
 dependencies {
