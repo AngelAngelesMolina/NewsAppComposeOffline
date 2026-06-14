@@ -14,9 +14,7 @@ NewAppCompose is a modern Android application built with Jetpack Compose that al
 
 | News Feed | Article Detail |
 | --- | --- |
-| ![News Feed](https://via.placeholder.com/300x600?text=News+Feed) | ![Article Detail](https://via.placeholder.com/300x600?text=Article+Detail) |
-
-*(Note: Replace these placeholders with actual screenshots from the app)*
+| ![News Feed](https://github.com/user-attachments/assets/14099b57-5665-4360-b137-0afcaae767fa) | ![Article Detail](https://github.com/user-attachments/assets/de5fc311-365b-46da-88df-1325345f9dd9) |
 
 ## 🛠 Tech Stack
 
